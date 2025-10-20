@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-to-Video Generator - Sudarshan's Portfolio</title>
+  <link href="assets/css/video-generator.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Sudarshan's Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="video-generator.html" class="active">Video Generator</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero-section">
+        <h1>Text-to-Video Generation Model</h1>
+        <p class="subtitle">Transform your text descriptions into dynamic video sequences</p>
+      </section>
+
+      <section class="generator-section">
+        <div class="input-area">
+          <h2>Enter Your Text Prompt</h2>
+          <textarea 
+            id="textPrompt" 
+            placeholder="Describe the video you want to generate... (e.g., 'A sunrise over mountains with birds flying')&#10;&#10;Example prompts:&#10;- A robot dancing in a futuristic city&#10;- Ocean waves crashing on a beach at sunset&#10;- A person walking through a forest in autumn"
+            rows="6"
+          ></textarea>
+          
+          <div class="controls">
+            <div class="control-group">
+              <label for="duration">Duration (seconds):</label>
+              <input type="range" id="duration" min="3" max="10" value="5" step="1">
+              <span id="durationValue">5s</span>
+            </div>
+            
+            <div class="control-group">
+              <label for="style">Video Style:</label>
+              <select id="style">
+                <option value="realistic">Realistic</option>
+                <option value="animated">Animated</option>
+                <option value="cinematic">Cinematic</option>
+                <option value="abstract">Abstract</option>
+              </select>
+            </div>
+            
+            <div class="control-group">
+              <label for="quality">Quality:</label>
+              <select id="quality">
+                <option value="draft">Draft (Fast)</option>
+                <option value="standard" selected>Standard</option>
+                <option value="high">High (Slow)</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="generateBtn" class="generate-btn">
+            <span class="btn-text">Generate Video</span>
+            <span class="btn-icon">🎬</span>
+          </button>
+        </div>
+
+        <div class="output-area">
+          <h2>Generated Video</h2>
+          <div id="videoPreview" class="video-preview">
+            <div class="placeholder">
+              <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M40 35 L40 65 L65 50 Z" fill="currentColor"/>
+              </svg>
+              <p>Your generated video will appear here</p>
+            </div>
+          </div>
+          
+          <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating your video...</p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="statusText" class="status-text">Initializing...</p>
+          </div>
+
+          <div id="videoInfo" class="video-info" style="display: none;">
+            <h3>Video Information</h3>
+            <ul>
+              <li><strong>Prompt:</strong> <span id="infoPrompt"></span></li>
+              <li><strong>Duration:</strong> <span id="infoDuration"></span></li>
+              <li><strong>Style:</strong> <span id="infoStyle"></span></li>
+              <li><strong>Quality:</strong> <span id="infoQuality"></span></li>
+            </ul>
+            <button id="downloadBtn" class="download-btn">Download Video</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h2>How It Works</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="icon">✍️</div>
+            <h3>1. Describe Your Vision</h3>
+            <p>Enter a detailed text description of the video you want to create. Be specific about scenes, actions, and atmosphere.</p>
+          </div>
+          <div class="info-card">
+            <div class="icon">⚙️</div>
+            <h3>2. Customize Settings</h3>
+            <p>Adjust duration, style, and quality parameters to match your requirements and preferences.</p>
+          </div>
+          <div class="info-card">
+            <div class="icon">🎬</div>
+            <h3>3. Generate & Download</h3>
+            <p>Click generate and watch as your text transforms into a video sequence. Download when ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="examples-section">
+        <h2>Example Prompts</h2>
+        <div class="examples-grid">
+          <div class="example-card" data-prompt="A robot dancing in a futuristic city with neon lights">
+            <h4>🤖 Futuristic Scene</h4>
+            <p>"A robot dancing in a futuristic city with neon lights"</p>
+          </div>
+          <div class="example-card" data-prompt="Ocean waves crashing on a beach at sunset with seagulls">
+            <h4>🌊 Nature Scene</h4>
+            <p>"Ocean waves crashing on a beach at sunset with seagulls"</p>
+          </div>
+          <div class="example-card" data-prompt="A person walking through a colorful autumn forest">
+            <h4>🍂 Seasonal Scene</h4>
+            <p>"A person walking through a colorful autumn forest"</p>
+          </div>
+          <div class="example-card" data-prompt="Fireworks exploding over a city skyline at night">
+            <h4>🎆 Celebration Scene</h4>
+            <p>"Fireworks exploding over a city skyline at night"</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Sudarshan's Portfolio. All Rights Reserved.</p>
+  </footer>
+
+  <script src="assets/js/video-generator.js"></script>
+</body>
+</html>
